@@ -9,3 +9,12 @@
 # typer
 # -e .
 
+dvc==3.67.1
+ipykernel==7.3.0
+matplotlib==3.11.0
+dask==2026.6.0
+pandas==3.0.3
+pyarrow==24.0.0
+seaborn==0.13.2
+jinja2==3.1.6
+graphviz==0.21

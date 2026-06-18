@@ -2,15 +2,25 @@
 
 The project predicts the demand for Uber rides using [**Taxi in New York City**](https://www.kaggle.com/datasets/elemento/nyc-yellow-taxi-trip-data?select=yellow_tripdata_2016-03.csv). So, that drivers can be better prepared for the demand, navigate to regions of higher demand and make more money.
 
+We predict number of pickups at a given time interval (e.g., 15 minutes, 30 minutes, or 1 hour such that below 3 conditions are met) in a given region.
+- Longer time interval enables drivers to reach the region with high demand
+- Longer time interval causes cost and time wastage
+- Longer time interval many not be accurate.
+
+**KMeans Clustering** stores the **centroids** for each regions in the cluster and we will use this centroid to calculate the distances from the near by regions and sort the distances to the near by regions. These centroids server as identity for each region.
+
+Darker regions on the map indicate higher demand and lighter regions indicate lower demand for Uber rides.
+
 Steps:
 1. Use **Dask** in chunking for data processing and model training to handle the large dataset efficiently
 2. Perform **EDA (Exploratory Data Analysis)** and **Feature Selection**
-3. Break down the city into regions using **Unsupervised Learning techniques** like **Clustering**
-4. For each region, prepare the historical data using **Time Series Analysis**
-5. For each region, train the **Regression Models** to predict the demand for Uber rides at a given time
-6. Evaluation using metrics like **MAPE (Mean Absolute Percentage Error)** Because it calculates the absolute percentage difference, it actually penalizes errors on smaller actual values more heavily and can be biased
-7. Hyperparameter tune the best-performance model using **Optuna**
-8. Plot the regional demand on a map or graph to visualize trends.
+3. Break down the city into regions using **Unsupervised Learning techniques** like **KMeans Clustering**
+4. Break down the time axis into intervals
+5. For each region, prepare the historical data using **Time Series Analysis**
+6. For each region, train the **Regression Models** to predict the demand for Uber rides at a given time
+7. Evaluation using metrics like **MAPE (Mean Absolute Percentage Error)** Because it calculates the absolute percentage difference, it actually penalizes errors on smaller actual values more heavily and can be biased
+8. Hyperparameter tune the best-performance model using **Optuna**
+9. Plot the regional demand on a map or graph to visualize trends.
 
 
 > Demand is the number of successful Uber ride service requests at a location and time.
