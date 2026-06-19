@@ -7,7 +7,11 @@ We predict number of pickups at a given time interval (e.g., 15 minutes, 30 minu
 - Longer time interval causes cost and time wastage
 - Longer time interval many not be accurate.
 
-**KMeans Clustering** stores the **centroids** for each regions in the cluster and we will use this centroid to calculate the distances from the near by regions and sort the distances to the near by regions. These centroids server as identity for each region.
+In New York, cabs take 15 minutes to travel 1 mile of distance. So, centroids of current region and neighboring regions should be around 1 mile apart, thus time interval should be around 15 minutes. Also, Regions should not be too small that it becomes individual pickup points.
+
+**KMeans Clustering** stores the **centroids** for each regions in the cluster and we will use this centroid to calculate the distances from the near by regions and sort the distances to the near by regions. These centroids server as identity for each region. We will be using `mini-batch KMeans clustering` to break down the city into regions because we have a very large dataset (like here we have crores of rows) and mini-batch KMeans is more efficient than KMeans clustering.
+
+We will choose 8(north, south, east, west, north-east, north-west, south-east, south-west) neighboring regions for each region.
 
 Darker regions on the map indicate higher demand and lighter regions indicate lower demand for Uber rides.
 
