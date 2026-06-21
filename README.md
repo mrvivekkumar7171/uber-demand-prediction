@@ -26,6 +26,16 @@ Steps:
 8. Hyperparameter tune the best-performance model using **Optuna**
 9. Plot the regional demand on a map or graph to visualize trends.
 
+1. concat jan, feb and mar data
+2. drop unnecessary columns and remove outliers
+3. use latitude and longitude from data to scale and cluster using KMeans and save the scaler and KMeans model for later use
+4. Resample the data to get total number of pickups in 15 minutes intervals and calculate average pickups for each time interval in each region using EWMA
+5. add lag features like t-1, t-2, t-3 and t-4.
+6. split the resample data into train and test set on the basis of time like jan and feb data will be used for training and mar data will be used for testing.
+7. train the model after encoding the categorical features and evaluate using test data.
+8. log the model to mlflow
+9. register the model to mlflow model registry
+10. change the alias of the model to production and deploy it.
 
 > Demand is the number of successful Uber ride service requests at a location and time.
 

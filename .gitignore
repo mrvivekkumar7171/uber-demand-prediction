@@ -1,5 +1,4 @@
-# Data
-/data/
+
 
 # Mac OS-specific storage files
 .DS_Store
@@ -191,3 +190,8 @@ cython_debug/
 .pypirc
 models/
 .vscode
+/run_information.json
+/data/external/
+/data/interim/
+/data/processed/
+data/raw/
