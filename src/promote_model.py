@@ -1,35 +1,30 @@
-import mlflow
-import dagshub
-import json
 from mlflow import MlflowClient
-
 import dagshub
-dagshub.init(repo_owner='himanshu1703', repo_name='uber-demand-prediction', mlflow=True)
+import mlflow
+import json
 
-# set the mlflow tracking uri
-mlflow.set_tracking_uri("https://dagshub.com/himanshu1703/uber-demand-prediction.mlflow")
+
+mlflow.set_tracking_uri("https://dagshub.com/mrvivekkumar7171/uber-demand-prediction.mlflow")
+dagshub.init(repo_owner='mrvivekkumar7171', repo_name='uber-demand-prediction', mlflow=True)
 
 
 def load_model_information(file_path):
     with open(file_path) as f:
         run_info = json.load(f)
-        
     return run_info
 
 
-# get model name
 registered_model_name = 'uber_demand_prediction_model'
+promotion_stage = "Production"
 stage = "Staging"
 
 # get the latest version from staging stage
 client = MlflowClient()
 
 # get the latest version of model in staging
-latest_versions = client.get_latest_versions(name=registered_model_name,stages=[stage])
+latest_versions = client.get_latest_versions(name=registered_model_name, stages=[stage])
 latest_model_version_staging = latest_versions[0].version
 
-# promotion stage
-promotion_stage = "Production"
 
 model_version_prod = client.transition_model_version_stage(
                                                         name=registered_model_name,
