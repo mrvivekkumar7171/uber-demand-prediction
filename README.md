@@ -11,6 +11,8 @@ In New York, cabs take 15 minutes to travel 1 mile of distance. So, centroids of
 
 **KMeans Clustering** stores the **centroids** for each regions in the cluster and we will use this centroid to calculate the distances from the near by regions and sort the distances to the near by regions. These centroids server as identity for each region. We will be using `mini-batch KMeans clustering` to break down the city into regions because we have a very large dataset (like here we have crores of rows) and mini-batch KMeans is more efficient than KMeans clustering.
 
+In production and real world, we will be taking location latitude and longitude and date and time from the driver's app running on the driver's phone.
+
 We will choose 8(north, south, east, west, north-east, north-west, south-east, south-west) neighboring regions for each region.
 
 Darker regions on the map indicate higher demand and lighter regions indicate lower demand for Uber rides.
